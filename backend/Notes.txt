@@ -1,0 +1,97 @@
+D:\krishna\KRISHNA\My-Projects\SecureLinkQR>mkdir backend && cd backend
+
+D:\krishna\KRISHNA\My-Projects\SecureLinkQR\backend>npm init -y
+Wrote to D:\krishna\KRISHNA\My-Projects\SecureLinkQR\backend\package.json:
+
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
+
+
+D:\krishna\KRISHNA\My-Projects\SecureLinkQR\backend>npm install express cors dotenv axios xgboost-node multer sharp qrcode-reader jimp
+
+npm ERR! code E404
+npm ERR! 404 Not Found - GET https://registry.npmjs.org/xgboost-node - Not found
+npm ERR! 404 
+npm ERR! 404  'xgboost-node@*' is not in this registry.
+npm ERR! 404 
+npm ERR! 404 Note that you can also install from a
+npm ERR! 404 tarball, folder, http url, or git url.
+
+npm ERR! A complete log of this run can be found in: C:\Users\HP\AppData\Local\npm-cache\_logs\2025-09-20T21_02_57_446Z-debug-0.log   
+
+D:\krishna\KRISHNA\My-Projects\SecureLinkQR\backend>npm install express cors dotenv axios multer sharp qrcode-reader jimp node-xgboost
+
+npm ERR! code E404
+npm ERR! 404 Not Found - GET https://registry.npmjs.org/node-xgboost - Not found
+npm ERR! 404
+npm ERR! 404  'node-xgboost@*' is not in this registry.
+npm ERR! 404
+npm ERR! 404 Note that you can also install from a
+npm ERR! 404 tarball, folder, http url, or git url.
+
+npm ERR! A complete log of this run can be found in: C:\Users\HP\AppData\Local\npm-cache\_logs\2025-09-20T21_09_55_071Z-debug-0.log   
+
+D:\krishna\KRISHNA\My-Projects\SecureLinkQR\backend>npm install express cors dotenv axios multer sharp qrcode-reader jimp ml-matrix ml-regnpnpnpm ERR! code ECONNRESET
+npm ERR! syscall read
+npm ERR! errno -4077
+npm ERR! network read ECONNRESET
+npm ERR! network This is a problem related to network connectivity.    
+npm ERR! network In most cases you are behind a proxy or have bad network settings.
+npm ERR! network
+npm ERR! network If you are behind a proxy, please make sure that the  
+npm ERR! network 'proxy' config is set properly.  See: 'npm help config'
+
+npm ERR! A complete log of this run can be found in: C:\Users\HP\AppData\Local\npm-cache\_logs\2025-09-20T21_11_47_661Z-debug-0.log
+
+rted.
+npm WARN deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+npm ERR! code ERR_SOCKET_TIMEOUT
+npm ERR! network Socket timeout
+npm ERR! network This is a problem related to network connectivity.
+rted.
+npm WARN deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+npm ERR! code ERR_SOCKET_TIMEOUT
+npm ERR! network Socket timeout
+npm ERR! network This is a problem related to network connectivity.
+npm ERR! network In most cases you are behind a proxy or have bad network settings.
+npm ERR! network
+npm ERR! network If you are behind a proxy, please make sure that the
+npm ERR! network 'proxy' config is set properly.  See: 'npm help config'
+
+npm ERR! A complete log of this run can be found in: C:\Users\HP\AppData\Local\npm-cache\_logs\2025-09-20T21_13_12_845Z-debug-0.log
+
+D:\krishna\KRISHNA\My-Projects\SecureLinkQR\backend>npm i   
+
+removed 283 packages, and audited 1 package in 3s
+
+found 0 vulnerabilities
+
+D:\krishna\KRISHNA\My-Projects\SecureLinkQR\backend>npm run 
+dev
+npm ERR! Missing script: "dev"
+npm ERR! A complete log of this run can be found in: C:\Users\HP\AppData\Local\npm-cache\_logs\2025-09-20T21_41_42_685Z-debug-0.log
+
+D:\krishna\KRISHNA\My-Projects\SecureLinkQR\backend>npm start
+npm ERR! Missing script: "start"
+npm ERR!
+npm ERR! Did you mean one of these?
+npm ERR!     npm star # Mark your favorite packages
+npm ERR!     npm stars # View packages marked as favorites
+npm ERR!
+npm ERR! To see a list of scripts, run:
+npm ERR!   npm run
+
+npm ERR! A complete log of this run can be found in: C:\Users\HP\AppData\Local\npm-cache\_logs\2025-09-20T21_41_53_255Z-debug-0.log
+
+D:\krishna\KRISHNA\My-Projects\SecureLinkQR\backend>

@@ -1,0 +1,49 @@
+{
+  "processing_stats": {
+    "total_qr_processed": 10000,
+    "urls_extracted": 9518,
+    "failed_extractions": 482,
+    "genuine_urls": 4750,
+    "malicious_urls": 4768,
+    "opencv_decode_success": 9518,
+    "pil_decode_success": 0,
+    "total_decode_failures": 482
+  },
+  "dataset_summary": {
+    "total_samples": 9518,
+    "samples_with_urls": 9518,
+    "samples_without_urls": 0,
+    "genuine_samples": 4750,
+    "malicious_samples": 4768
+  },
+  "sample_urls": {
+    "genuine_urls": [
+      "https://www.google.com",
+      "https://www.youtube.com",
+      "https://www.taobao.com",
+      "https://www.google.com.sa",
+      "https://www.en.wikipedia.org/wiki/Bill_Foster_..",
+      "https://www.en.wikipedia.org/wiki/South_Africa..",
+      "https://www.en.wikipedia.org/wiki/South_Africa..",
+      "https://www.en.wikipedia.org/wiki/South_Africa..",
+      "https://www.en.wikipedia.org/wiki/South_Asian_..",
+      "https://www.en.wikipedia.org/wiki/South_Carolina"
+    ],
+    "malicious_urls": [
+      "http://atualizacaodedados.online",
+      "http://webmasteradmin.ukit.me/",
+      "http://stcdxmt.bigperl.in/klxtv/apps/uk/",
+      "https://tubuh-syarikat.com/plugins/fields/files/",
+      "http://rolyborgesmd.com/exceword/excel.php?.ra..",
+      "http://ongelezen-voda.000webhostapp.com/inlogg..",
+      "http://www.valenzaceramic.com/home/webapps/e52..",
+      "http://membership-issue.forteimpex.com/dk2mmm=..",
+      "http://membership-issue.forteimpex.com/dk2mmm=..",
+      "http://chronopost-service-enligne.net/56123s/r.."
+    ]
+  },
+  "success_rates": {
+    "decode_success_rate": 95.17999999999999,
+    "url_extraction_rate": 95.17999999999999
+  }
+}

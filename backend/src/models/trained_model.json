@@ -1,0 +1,182 @@
+{
+  "model_type": "RandomForest",
+  "feature_names": [
+    "url_length",
+    "dot_count",
+    "hyphen_count",
+    "underscore_count",
+    "slash_count",
+    "question_mark_count",
+    "equal_count",
+    "at_count",
+    "and_count",
+    "exclamation_count",
+    "space_count",
+    "tilde_count",
+    "comma_count",
+    "plus_count",
+    "asterisk_count",
+    "hash_count",
+    "dollar_count",
+    "percent_count",
+    "domain_length",
+    "path_length",
+    "query_length",
+    "fragment_length",
+    "subdomain_count",
+    "domain_word_count",
+    "tld_length",
+    "is_https",
+    "is_http",
+    "has_port",
+    "has_ip",
+    "suspicious_keyword_count",
+    "is_shortener",
+    "char_diversity",
+    "digit_ratio",
+    "letter_ratio",
+    "special_char_ratio",
+    "has_www",
+    "path_depth",
+    "entropy"
+  ],
+  "feature_count": 38,
+  "model_info": {
+    "algorithm": "RandomForest",
+    "version": "2.0.0",
+    "training_date": "2025-09-22T02:26:02.351421",
+    "performance": {
+      "accuracy": 0.997627208014764,
+      "auc_score": 0.9999271554480497,
+      "training_samples": 18964,
+      "test_samples": 3793
+    }
+  },
+  "thresholds": {
+    "high_risk": 0.8,
+    "medium_risk": 0.6,
+    "low_risk": 0.4
+  },
+  "top_features": [
+    [
+      "is_http",
+      0.2944012859717636
+    ],
+    [
+      "is_https",
+      0.23273870919292783
+    ],
+    [
+      "has_www",
+      0.18968872519896512
+    ],
+    [
+      "subdomain_count",
+      0.12855015435921016
+    ],
+    [
+      "dot_count",
+      0.035962444745984236
+    ],
+    [
+      "domain_length",
+      0.025809646257861245
+    ],
+    [
+      "tld_length",
+      0.014100717575027384
+    ],
+    [
+      "digit_ratio",
+      0.011815165604894446
+    ],
+    [
+      "path_length",
+      0.01178740110522595
+    ],
+    [
+      "underscore_count",
+      0.008402276758589825
+    ],
+    [
+      "slash_count",
+      0.006767598880796071
+    ],
+    [
+      "letter_ratio",
+      0.0054421328126673905
+    ],
+    [
+      "path_depth",
+      0.005382745801613957
+    ],
+    [
+      "special_char_ratio",
+      0.004826792834799643
+    ],
+    [
+      "suspicious_keyword_count",
+      0.004724387410908948
+    ],
+    [
+      "entropy",
+      0.0042473901480694284
+    ],
+    [
+      "char_diversity",
+      0.004067534526247852
+    ],
+    [
+      "domain_word_count",
+      0.0036532812584745425
+    ],
+    [
+      "url_length",
+      0.003095535219813101
+    ],
+    [
+      "hyphen_count",
+      0.0019653942579699766
+    ]
+  ],
+  "all_feature_importance": {
+    "url_length": 0.003095535219813101,
+    "dot_count": 0.035962444745984236,
+    "hyphen_count": 0.0019653942579699766,
+    "underscore_count": 0.008402276758589825,
+    "slash_count": 0.006767598880796071,
+    "question_mark_count": 0.00045729176507328204,
+    "equal_count": 9.975089307044568e-05,
+    "at_count": 0.0,
+    "and_count": 2.1302920962158074e-05,
+    "exclamation_count": 0.0,
+    "space_count": 0.0,
+    "tilde_count": 0.00022246021467774873,
+    "comma_count": 0.0,
+    "plus_count": 0.0003924487799449278,
+    "asterisk_count": 0.0,
+    "hash_count": 0.0,
+    "dollar_count": 0.0,
+    "percent_count": 4.727010112682363e-05,
+    "domain_length": 0.025809646257861245,
+    "path_length": 0.01178740110522595,
+    "query_length": 0.0010279811181818272,
+    "fragment_length": 0.0,
+    "subdomain_count": 0.12855015435921016,
+    "domain_word_count": 0.0036532812584745425,
+    "tld_length": 0.014100717575027384,
+    "is_https": 0.23273870919292783,
+    "is_http": 0.2944012859717636,
+    "has_port": 0.0,
+    "has_ip": 4.8480377694762195e-05,
+    "suspicious_keyword_count": 0.004724387410908948,
+    "is_shortener": 0.0002536939074574202,
+    "char_diversity": 0.004067534526247852,
+    "digit_ratio": 0.011815165604894446,
+    "letter_ratio": 0.0054421328126673905,
+    "special_char_ratio": 0.004826792834799643,
+    "has_www": 0.18968872519896512,
+    "path_depth": 0.005382745801613957,
+    "entropy": 0.0042473901480694284
+  }
+}

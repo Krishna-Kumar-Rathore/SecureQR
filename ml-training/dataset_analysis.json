@@ -1,0 +1,19 @@
+{
+  "total_samples": 18964,
+  "genuine_samples": 9498,
+  "malicious_samples": 9466,
+  "sample_genuine_urls": [
+    "0    https://www.google.com\nName: url, dtype: object",
+    "1    https://www.youtube.com\nName: url, dtype: object",
+    "10    https://www.taobao.com\nName: url, dtype: object",
+    "100    https://www.google.com.sa\nName: url, dtype: object",
+    "1000    https://www.en.wikipedia.org/wiki/Bill_Foster_...\nName: url, dtype: object"
+  ],
+  "sample_malicious_urls": [
+    "316254    http://atualizacaodedados.online\nName: url, dtype: object",
+    "316255    http://webmasteradmin.ukit.me/\nName: url, dtype: object",
+    "316256    http://stcdxmt.bigperl.in/klxtv/apps/uk/\nName: url, dtype: object",
+    "316257    https://tubuh-syarikat.com/plugins/fields/files/\nName: url, dtype: object",
+    "316258    http://rolyborgesmd.com/exceword/excel.php?.ra...\nName: url, dtype: object"
+  ]
+}

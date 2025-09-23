@@ -1,0 +1,15 @@
+{
+  "extraction_stats": {
+    "total_processed": 18964,
+    "urls_found": 18964,
+    "urls_failed": 0
+  },
+  "summary": {
+    "total_samples": 18964,
+    "samples_with_urls": 18964,
+    "samples_without_urls": 0,
+    "success_rate": 100.0,
+    "genuine_urls": 9498,
+    "malicious_urls": 9466
+  }
+}
