@@ -1,39 +1,39 @@
 {
   "dataset_info": {
-    "total_samples": 18964,
-    "safe_samples": 9498,
-    "malicious_samples": 9466,
+    "total_samples": 9518,
+    "safe_samples": 4750,
+    "malicious_samples": 4768,
     "features_count": 38
   },
   "model_comparison": {
     "RandomForest": {
-      "accuracy": 0.997627208014764,
-      "auc_score": 0.9999271554480497
+      "accuracy": 0.9952731092436975,
+      "auc_score": 0.9998107690610173
     },
     "GradientBoosting": {
-      "accuracy": 0.997363564460849,
-      "auc_score": 0.9998290099257652
+      "accuracy": 0.9942226890756303,
+      "auc_score": 0.9998240097098091
     },
     "LogisticRegression": {
-      "accuracy": 0.9965726337991037,
-      "auc_score": 0.9997811883115078
+      "accuracy": 0.990546218487395,
+      "auc_score": 0.9994328588767516
     },
     "XGBoost": {
-      "accuracy": 0.9970999209069338,
-      "auc_score": 0.9998101037061752
+      "accuracy": 0.9952731092436975,
+      "auc_score": 0.9997462208981573
     },
     "LightGBM": {
-      "accuracy": 0.9978908515686792,
-      "auc_score": 0.9998659882670226
+      "accuracy": 0.9952731092436975,
+      "auc_score": 0.9997495310603552
     }
   },
   "best_model": {
-    "name": "RandomForest",
+    "name": "GradientBoosting",
     "performance": {
-      "accuracy": 0.997627208014764,
-      "auc_score": 0.9999271554480497,
-      "training_samples": 18964,
-      "test_samples": 3793
+      "accuracy": 0.9942226890756303,
+      "auc_score": 0.9998240097098091,
+      "training_samples": 9518,
+      "test_samples": 1904
     }
   },
   "feature_names": [
@@ -59,12 +59,14 @@
     "path_length",
     "query_length",
     "fragment_length",
-    "subdomain_count",
-    "domain_word_count",
-    "tld_length",
+    "path_depth",
     "is_https",
     "is_http",
     "has_port",
+    "subdomain_count",
+    "domain_word_count",
+    "tld_length",
+    "has_www",
     "has_ip",
     "suspicious_keyword_count",
     "is_shortener",
@@ -72,8 +74,6 @@
     "digit_ratio",
     "letter_ratio",
     "special_char_ratio",
-    "has_www",
-    "path_depth",
     "entropy"
   ]
 }

@@ -8,5 +8,6 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`🚀 SecureQR Backend running on port ${PORT}`);
-  console.log(`📊 ML Model loading...`);
+  console.log(`🔒 Google Safe Browsing integration active`);
+  console.log(`📡 API endpoints ready at http://localhost:${PORT}/api`);
 });

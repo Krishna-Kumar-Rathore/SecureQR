@@ -3,8 +3,11 @@
 # ============================================
 
 Notes.txt
+Notes.md 
 pythonAPITest.py
 dataset/QR codes
+FakeQRGenerator.html
+dataset/QR codes/FakeLinks_QR_Codes
 
 # ============================================
 # Node.js Dependencies and Build Files

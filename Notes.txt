@@ -1,95 +1,380 @@
-On copying the installation command for backend , it gives error.
+Development Workflow:
 
+Daily Development: Start backend → Start frontend
+Testing Changes: Restart only the service you modified
+Training Models: Run ML training when you have new data
+Production: Build frontend → Deploy backend + frontend build
 
-D:\krishna\KRISHNA\My-Projects\SecureLinkQR\frontend>npx tailwindcss init -p
+The key is always starting the backend first, as the frontend depends on the API being available.
 
-Created Tailwind CSS config file: tailwind.config.js
-Created PostCSS config file: postcss.config.js
+**Backend First → Frontend Second → ML Training (Optional)**
 
-D:\krishna\KRISHNA\My-Projects\SecureLinkQR\frontend>cd ..
+The backend must run first because the frontend depends on it for API calls.
 
-D:\krishna\KRISHNA\My-Projects\SecureLinkQR>mkdir backend && cd backend
+# Navigate to backend directory
+cd backend
 
-D:\krishna\KRISHNA\My-Projects\SecureLinkQR\backend>npm init -y
-Wrote to D:\krishna\KRISHNA\My-Projects\SecureLinkQR\backend\package.json:
+# Install dependencies (if not done already)
+npm installHere's the proper sequence and commands to run your SecureQR project:
 
+## **Recommended Running Order:**
+
+**Backend First → Frontend Second → ML Training (Optional)**
+
+The backend must run first because the frontend depends on it for API calls.
+
+## **Step-by-Step Commands:**
+
+### **Step 1: Start Backend (Required)**
+```bash
+# Navigate to backend directory
+cd backend
+
+# Install dependencies (if not done already)
+npm install
+
+# Start backend in development mode
+npm run dev
+```
+
+**Expected Output:**
+```
+🚀 SecureQR Backend running on port 5000
+🔒 Google Safe Browsing integration active
+📡 API endpoints ready at http://localhost:5000/api
+⚠️ No trained ML model found, using rule-based analysis
+```
+
+**Keep this terminal open and running.**
+
+---
+
+### **Step 2: Start Frontend (Required)**
+Open a **new terminal** and run:
+
+```bash
+# Navigate to frontend directory
+cd frontend
+
+# Install dependencies (if not done already)
+npm install
+
+# Start frontend development server
+npm run dev
+```
+
+**Expected Output:**
+```
+VITE v7.1.6  ready in 590 ms
+➜  Local:   http://localhost:5173/
+➜  Network: use --host to expose
+```
+
+**Keep this terminal open too.**
+
+---
+
+### **Step 3: Test the Application**
+1. Open your browser
+2. Go to `http://localhost:5173`
+3. You should see the SecureQR interface
+4. Test with a sample URL like `https://google.com`
+
+---
+
+### **Step 4: ML Training (Optional)**
+Only do this if you want to train custom models with your QR dataset.
+
+Open a **third terminal** and run:
+
+```bash
+# Navigate to ml-training directory
+cd ml-training
+
+# Install Python dependencies (if not done already)
+pip install -r requirements.txt
+
+# Process your QR dataset (if you have the dataset)
+python process_qr_dataset_windows.py
+
+# Train ML models (after processing is complete)
+python train_model.py
+```
+
+**Note:** ML training will only work if you have the QR code dataset in `dataset/QR Codes/`.
+
+---
+
+## **Quick Start Script (All at Once)**
+
+Create a `start.sh` script in your project root:
+
+```bash
+#!/bin/bash
+
+echo "🚀 Starting SecureQR Project..."
+
+# Start backend in background
+echo "📡 Starting Backend..."
+cd backend && npm run dev &
+BACKEND_PID=$!
+
+# Wait for backend to start
+sleep 5
+
+# Start frontend in background
+echo "🎨 Starting Frontend..."
+cd ../frontend && npm run dev &
+FRONTEND_PID=$!
+
+echo "✅ Project started!"
+echo "📡 Backend: http://localhost:5000"
+echo "🎨 Frontend: http://localhost:5173"
+echo ""
+echo "Press Ctrl+C to stop all services"
+
+# Wait for interrupt
+trap "kill $BACKEND_PID $FRONTEND_PID" INT
+wait
+```
+
+Then run:
+```bash
+chmod +x start.sh
+./start.sh
+```
+
+---
+
+## **Verification Steps:**
+
+### **1. Check Backend Health**
+```bash
+curl http://localhost:5000/api/health
+```
+
+Expected response:
+```json
 {
-  "name": "backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "status": "OK",
+  "message": "SecureQR Backend is running",
+  "timestamp": "2024-..."
 }
+```
 
+### **2. Test URL Analysis**
+```bash
+curl -X POST http://localhost:5000/api/check-url \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://google.com"}'
+```
 
+### **3. Frontend Access**
+Visit `http://localhost:5173` and verify:
+- Page loads without errors
+- QR scanner interface appears
+- Upload button works
+- No console errors
 
-D:\krishna\KRISHNA\My-Projects\SecureLinkQR\backend>npm install express cors dotenv axios xgboost-node multer sharp qrcode-reader jimp
+---
 
-npm ERR! code E404
-npm ERR! 404 Not Found - GET https://registry.npmjs.org/xgboost-node - Not found
-npm ERR! 404 
-npm ERR! 404  'xgboost-node@*' is not in this registry.
-npm ERR! 404 
-npm ERR! 404 Note that you can also install from a
-npm ERR! 404 tarball, folder, http url, or git url.
+## **Troubleshooting:**
 
-npm ERR! A complete log of this run can be found in: C:\Users\HP\AppData\Local\npm-cache\_logs\2025-09-20T21_02_57_446Z-debug-0.log   
+**Backend won't start:**
+- Ensure port 5000 is free
+- Check Node.js version (18+)
+- Verify .env file exists
 
-D:\krishna\KRISHNA\My-Projects\SecureLinkQR\backend>npm install express cors dotenv axios multer sharp qrcode-reader jimp node-xgboost
+**Frontend won't connect:**
+- Ensure backend is running first
+- Check for CORS errors in browser console
+- Verify API URL in `frontend/src/utils/api.js`
 
-npm ERR! code E404
-npm ERR! 404 Not Found - GET https://registry.npmjs.org/node-xgboost - Not found
-npm ERR! 404
-npm ERR! 404  'node-xgboost@*' is not in this registry.
-npm ERR! 404
-npm ERR! 404 Note that you can also install from a
-npm ERR! 404 tarball, folder, http url, or git url.
+**ML Training fails:**
+- Ensure Python 3.8+ is installed
+- Install dependencies: `pip install -r requirements.txt`
+- Check if dataset exists in correct location
 
-npm ERR! A complete log of this run can be found in: C:\Users\HP\AppData\Local\npm-cache\_logs\2025-09-20T21_09_55_071Z-debug-0.log   
+---
 
-D:\krishna\KRISHNA\My-Projects\SecureLinkQR\backend>npm install express cors dotenv axios multer sharp qrcode-reader jimp ml-matrix ml-regnpnpnpm ERR! code ECONNRESET
-npm ERR! syscall read
-npm ERR! errno -4077
-npm ERR! network read ECONNRESET
-npm ERR! network This is a problem related to network connectivity.    
-npm ERR! network In most cases you are behind a proxy or have bad network settings.
-npm ERR! network
-npm ERR! network If you are behind a proxy, please make sure that the  
-npm ERR! network 'proxy' config is set properly.  See: 'npm help config'
+## **Development Workflow:**
 
-npm ERR! A complete log of this run can be found in: C:\Users\HP\AppData\Local\npm-cache\_logs\2025-09-20T21_11_47_661Z-debug-0.log
+1. **Daily Development:** Start backend → Start frontend
+2. **Testing Changes:** Restart only the service you modified
+3. **Training Models:** Run ML training when you have new data
+4. **Production:** Build frontend → Deploy backend + frontend build
 
-D:\krishna\KRISHNA\My-Projects\SecureLinkQR\backend>npm install express cors dotenv axios multer sharp qrcode-reader jimp @tensorflow/tfjs-node
-npm WARN deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
-npm WARN deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
-npm WARN deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
-npm WARN deprecated gauge@3.0.2: This package is no longer supported.  
-npm WARN deprecated are-we-there-yet@2.0.0: This package is no longer supported.
-npm WARN deprecated npmlog@5.0.1: This package is no longer supported.
-npm WARN deprecated rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
-npm ERR! code ERR_SOCKET_TIMEOUT
-npm ERR! network Socket timeout
-npm ERR! network This is a problem related to network connectivity.    
-npm ERR! network In most cases you are behind a proxy or have bad network settings.
-npm ERR! network
-npm ERR! network If you are behind a proxy, please make sure that the  
-npm ERR! network 'proxy' config is set properly.  See: 'npm help config'
+The key is always starting the backend first, as the frontend depends on the API being available.
 
-npm ERR! A complete log of this run can be found in: C:\Users\HP\AppData\Local\npm-cache\_logs\2025-09-20T21_13_12_845Z-debug-0.log
+# Start backend in development mode
+npm run dev
+```
 
-D:\krishna\KRISHNA\My-Projects\SecureLinkQR\backend>
+**Expected Output:**
+```
+🚀 SecureQR Backend running on port 5000
+🔒 Google Safe Browsing integration active
+📡 API endpoints ready at http://localhost:5000/api
+⚠️ No trained ML model found, using rule-based analysis
+```
 
+**Keep this terminal open and running.**
 
+---
 
-////////
+### **Step 2: Start Frontend (Required)**
+Open a **new terminal** and run:
 
-i also need to add all QR codes imgs into the ml-training folder & change the img path(eg :  process_qr_dataset.py) in each file accoardingly. 
+```bash
+# Navigate to frontend directory
+cd frontend
 
+# Install dependencies (if not done already)
+npm install
 
+# Start frontend development server
+npm run dev
+```
 
+**Expected Output:**
+```
+VITE v7.1.6  ready in 590 ms
+➜  Local:   http://localhost:5173/
+➜  Network: use --host to expose
+```
 
+**Keep this terminal open too.**
+
+---
+
+### **Step 3: Test the Application**
+1. Open your browser
+2. Go to `http://localhost:5173`
+3. You should see the SecureQR interface
+4. Test with a sample URL like `https://google.com`
+
+---
+
+### **Step 4: ML Training (Optional)**
+Only do this if you want to train custom models with your QR dataset.
+
+Open a **third terminal** and run:
+
+```bash
+# Navigate to ml-training directory
+cd ml-training
+
+# Install Python dependencies (if not done already)
+pip install -r requirements.txt
+
+# Process your QR dataset (if you have the dataset)
+python process_qr_dataset_windows.py
+
+# Train ML models (after processing is complete)
+python train_model.py
+```
+
+**Note:** ML training will only work if you have the QR code dataset in `dataset/QR Codes/`.
+
+---
+
+## **Quick Start Script (All at Once)**
+
+Create a `start.sh` script in your project root:
+
+```bash
+#!/bin/bash
+
+echo "🚀 Starting SecureQR Project..."
+
+# Start backend in background
+echo "📡 Starting Backend..."
+cd backend && npm run dev &
+BACKEND_PID=$!
+
+# Wait for backend to start
+sleep 5
+
+# Start frontend in background
+echo "🎨 Starting Frontend..."
+cd ../frontend && npm run dev &
+FRONTEND_PID=$!
+
+echo "✅ Project started!"
+echo "📡 Backend: http://localhost:5000"
+echo "🎨 Frontend: http://localhost:5173"
+echo ""
+echo "Press Ctrl+C to stop all services"
+
+# Wait for interrupt
+trap "kill $BACKEND_PID $FRONTEND_PID" INT
+wait
+```
+
+Then run:
+```bash
+chmod +x start.sh
+./start.sh
+```
+
+---
+
+## **Verification Steps:**
+
+### **1. Check Backend Health**
+```bash
+curl http://localhost:5000/api/health
+```
+
+Expected response:
+```json
+{
+  "status": "OK",
+  "message": "SecureQR Backend is running",
+  "timestamp": "2024-..."
+}
+```
+
+### **2. Test URL Analysis**
+```bash
+curl -X POST http://localhost:5000/api/check-url \
+  -H "Content-Type: application/json" \
+  -d '{"url": "https://google.com"}'
+```
+
+### **3. Frontend Access**
+Visit `http://localhost:5173` and verify:
+- Page loads without errors
+- QR scanner interface appears
+- Upload button works
+- No console errors
+
+---
+
+## **Troubleshooting:**
+
+**Backend won't start:**
+- Ensure port 5000 is free
+- Check Node.js version (18+)
+- Verify .env file exists
+
+**Frontend won't connect:**
+- Ensure backend is running first
+- Check for CORS errors in browser console
+- Verify API URL in `frontend/src/utils/api.js`
+
+**ML Training fails:**
+- Ensure Python 3.8+ is installed
+- Install dependencies: `pip install -r requirements.txt`
+- Check if dataset exists in correct location
+
+---
+
+## **Development Workflow:**
+
+1. **Daily Development:** Start backend → Start frontend
+2. **Testing Changes:** Restart only the service you modified
+3. **Training Models:** Run ML training when you have new data
+4. **Production:** Build frontend → Deploy backend + frontend build
+
+The key is always starting the backend first, as the frontend depends on the API being available.

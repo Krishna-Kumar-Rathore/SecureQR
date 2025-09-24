@@ -1,5 +1,5 @@
 {
-  "model_type": "RandomForest",
+  "model_type": "GradientBoosting",
   "feature_names": [
     "url_length",
     "dot_count",
@@ -23,12 +23,14 @@
     "path_length",
     "query_length",
     "fragment_length",
-    "subdomain_count",
-    "domain_word_count",
-    "tld_length",
+    "path_depth",
     "is_https",
     "is_http",
     "has_port",
+    "subdomain_count",
+    "domain_word_count",
+    "tld_length",
+    "has_www",
     "has_ip",
     "suspicious_keyword_count",
     "is_shortener",
@@ -36,20 +38,18 @@
     "digit_ratio",
     "letter_ratio",
     "special_char_ratio",
-    "has_www",
-    "path_depth",
     "entropy"
   ],
   "feature_count": 38,
   "model_info": {
-    "algorithm": "RandomForest",
+    "algorithm": "GradientBoosting",
     "version": "2.0.0",
-    "training_date": "2025-09-22T02:26:02.351421",
+    "training_date": "2025-09-24T11:03:40.064165",
     "performance": {
-      "accuracy": 0.997627208014764,
-      "auc_score": 0.9999271554480497,
-      "training_samples": 18964,
-      "test_samples": 3793
+      "accuracy": 0.9942226890756303,
+      "auc_score": 0.9998240097098091,
+      "training_samples": 9518,
+      "test_samples": 1904
     }
   },
   "thresholds": {
@@ -59,124 +59,124 @@
   },
   "top_features": [
     [
-      "is_http",
-      0.2944012859717636
+      "subdomain_count",
+      0.3436734049408767
     ],
     [
       "is_https",
-      0.23273870919292783
+      0.26385176566987334
+    ],
+    [
+      "is_http",
+      0.23872643827216797
     ],
     [
       "has_www",
-      0.18968872519896512
-    ],
-    [
-      "subdomain_count",
-      0.12855015435921016
-    ],
-    [
-      "dot_count",
-      0.035962444745984236
-    ],
-    [
-      "domain_length",
-      0.025809646257861245
-    ],
-    [
-      "tld_length",
-      0.014100717575027384
-    ],
-    [
-      "digit_ratio",
-      0.011815165604894446
-    ],
-    [
-      "path_length",
-      0.01178740110522595
-    ],
-    [
-      "underscore_count",
-      0.008402276758589825
-    ],
-    [
-      "slash_count",
-      0.006767598880796071
-    ],
-    [
-      "letter_ratio",
-      0.0054421328126673905
-    ],
-    [
-      "path_depth",
-      0.005382745801613957
-    ],
-    [
-      "special_char_ratio",
-      0.004826792834799643
-    ],
-    [
-      "suspicious_keyword_count",
-      0.004724387410908948
-    ],
-    [
-      "entropy",
-      0.0042473901480694284
-    ],
-    [
-      "char_diversity",
-      0.004067534526247852
+      0.14920560552762796
     ],
     [
       "domain_word_count",
-      0.0036532812584745425
+      0.0009457073986643327
+    ],
+    [
+      "tld_length",
+      0.0006464084930575316
+    ],
+    [
+      "char_diversity",
+      0.00045913342230739405
     ],
     [
       "url_length",
-      0.003095535219813101
+      0.0003837646950456933
     ],
     [
-      "hyphen_count",
-      0.0019653942579699766
+      "dot_count",
+      0.0003776810806494849
+    ],
+    [
+      "entropy",
+      0.0003331798387685319
+    ],
+    [
+      "path_length",
+      0.00030409790884233995
+    ],
+    [
+      "digit_ratio",
+      0.00020420028253338723
+    ],
+    [
+      "path_depth",
+      0.0001835076493890912
+    ],
+    [
+      "letter_ratio",
+      0.0001334991215503328
+    ],
+    [
+      "slash_count",
+      0.0001279980268337893
+    ],
+    [
+      "special_char_ratio",
+      0.00012332895255995184
+    ],
+    [
+      "domain_length",
+      0.00012167670742670956
+    ],
+    [
+      "underscore_count",
+      7.83186632466317e-05
+    ],
+    [
+      "query_length",
+      5.817062166508649e-05
+    ],
+    [
+      "is_shortener",
+      4.1517335089751935e-05
     ]
   ],
   "all_feature_importance": {
-    "url_length": 0.003095535219813101,
-    "dot_count": 0.035962444745984236,
-    "hyphen_count": 0.0019653942579699766,
-    "underscore_count": 0.008402276758589825,
-    "slash_count": 0.006767598880796071,
-    "question_mark_count": 0.00045729176507328204,
-    "equal_count": 9.975089307044568e-05,
+    "url_length": 0.0003837646950456933,
+    "dot_count": 0.0003776810806494849,
+    "hyphen_count": 1.2585597560791082e-05,
+    "underscore_count": 7.83186632466317e-05,
+    "slash_count": 0.0001279980268337893,
+    "question_mark_count": 0.0,
+    "equal_count": 1.3378191221613647e-06,
     "at_count": 0.0,
-    "and_count": 2.1302920962158074e-05,
+    "and_count": 3.53724641803937e-06,
     "exclamation_count": 0.0,
     "space_count": 0.0,
-    "tilde_count": 0.00022246021467774873,
+    "tilde_count": 0.0,
     "comma_count": 0.0,
-    "plus_count": 0.0003924487799449278,
+    "plus_count": 0.0,
     "asterisk_count": 0.0,
     "hash_count": 0.0,
     "dollar_count": 0.0,
-    "percent_count": 4.727010112682363e-05,
-    "domain_length": 0.025809646257861245,
-    "path_length": 0.01178740110522595,
-    "query_length": 0.0010279811181818272,
+    "percent_count": 0.0,
+    "domain_length": 0.00012167670742670956,
+    "path_length": 0.00030409790884233995,
+    "query_length": 5.817062166508649e-05,
     "fragment_length": 0.0,
-    "subdomain_count": 0.12855015435921016,
-    "domain_word_count": 0.0036532812584745425,
-    "tld_length": 0.014100717575027384,
-    "is_https": 0.23273870919292783,
-    "is_http": 0.2944012859717636,
+    "path_depth": 0.0001835076493890912,
+    "is_https": 0.26385176566987334,
+    "is_http": 0.23872643827216797,
     "has_port": 0.0,
-    "has_ip": 4.8480377694762195e-05,
-    "suspicious_keyword_count": 0.004724387410908948,
-    "is_shortener": 0.0002536939074574202,
-    "char_diversity": 0.004067534526247852,
-    "digit_ratio": 0.011815165604894446,
-    "letter_ratio": 0.0054421328126673905,
-    "special_char_ratio": 0.004826792834799643,
-    "has_www": 0.18968872519896512,
-    "path_depth": 0.005382745801613957,
-    "entropy": 0.0042473901480694284
+    "subdomain_count": 0.3436734049408767,
+    "domain_word_count": 0.0009457073986643327,
+    "tld_length": 0.0006464084930575316,
+    "has_www": 0.14920560552762796,
+    "has_ip": 0.0,
+    "suspicious_keyword_count": 3.1347287227947223e-06,
+    "is_shortener": 4.1517335089751935e-05,
+    "char_diversity": 0.00045913342230739405,
+    "digit_ratio": 0.00020420028253338723,
+    "letter_ratio": 0.0001334991215503328,
+    "special_char_ratio": 0.00012332895255995184,
+    "entropy": 0.0003331798387685319
   }
 }
