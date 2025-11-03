@@ -1,7 +1,8 @@
 const safeBrowsingService = require('../services/safeBrowsing');
-const mlModelService = require('../services/mlModel');
+const smartAnalyzer = require('../services/smartAnalyzer');  // ✅ CORRECT
 const urlAnalyzer = require('../services/urlAnalyzer');
 const upiValidator = require('../utils/upiValidator');
+
 
 exports.checkURL = async (req, res) => {
   try {
@@ -67,7 +68,7 @@ exports.checkURL = async (req, res) => {
       // ML Model analysis (if Safe Browsing didn't flag it)
       if (result.status !== 'malicious') {
         try {
-          const mlResult = await mlModelService.predictURL(url);
+          const mlResult = smartAnalyzer.analyzeURL(url);  // ✅ CORRECT
           result.confidence = mlResult.confidence;
           
           if (mlResult.isMalicious) {

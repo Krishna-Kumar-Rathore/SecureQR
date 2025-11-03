@@ -102,7 +102,7 @@ python train_model.py
 ```
 
 **Note:** ML training will only work if you have the QR code dataset in `dataset/QR Codes/`.
-
+python train_model.py
 ---
 
 ## **Quick Start Script (All at Once)**

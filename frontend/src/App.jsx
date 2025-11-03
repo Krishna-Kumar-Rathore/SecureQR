@@ -41,21 +41,21 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container px-4 py-8 mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
+        <div className="mb-8 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Shield className="text-blue-600" size={40} />
+             <Shield className="text-blue-600" size={40} /> {/* Shield icon */}
             <h1 className="text-4xl font-bold text-gray-800">SecureQR</h1>
           </div>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="max-w-2xl mx-auto text-lg text-gray-600">
             Scan or upload QR codes to check for malicious content and protect yourself from phishing and malware attacks.
           </p>
         </div>
 
         {/* Main Content */}
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-lg shadow-lg p-6">
+          <div className="p-6 bg-white rounded-lg shadow-lg">
             
             {/* Tab Navigation */}
             <div className="flex mb-6 border-b">
@@ -99,8 +99,8 @@ function App() {
 
             {/* Loading State */}
             {loading && (
-              <div className="text-center py-8">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+              <div className="py-8 text-center">
+                <div className="w-12 h-12 mx-auto mb-4 border-b-2 border-blue-500 rounded-full animate-spin"></div>
                 <p className="text-gray-600">Analyzing QR code content...</p>
               </div>
             )}
@@ -113,7 +113,7 @@ function App() {
               <div className="mt-6 text-center">
                 <button
                   onClick={resetScan}
-                  className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-lg transition-colors"
+                  className="px-6 py-2 font-bold text-white transition-colors bg-gray-500 rounded-lg hover:bg-gray-600"
                 >
                   Scan Another QR Code
                 </button>
@@ -122,33 +122,33 @@ function App() {
           </div>
 
           {/* Security Features */}
-          <div className="mt-8 grid md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow">
-              <div className="text-blue-500 mb-3">
+          <div className="grid gap-6 mt-8 md:grid-cols-3">
+            <div className="p-6 bg-white rounded-lg shadow">
+              <div className="mb-3 text-blue-500">
                 <Shield size={32} />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Google Safe Browsing</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="mb-2 text-lg font-semibold">Google Safe Browsing</h3>
+              <p className="text-sm text-gray-600">
                 Real-time protection against known malicious websites and phishing attempts.
               </p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow">
-              <div className="text-green-500 mb-3">
+            <div className="p-6 bg-white rounded-lg shadow">
+              <div className="mb-3 text-green-500">
                 <Scan size={32} />
               </div>
-              <h3 className="text-lg font-semibold mb-2">AI-Powered Detection</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="mb-2 text-lg font-semibold">AI-Powered Detection</h3>
+              <p className="text-sm text-gray-600">
                 Advanced machine learning model trained on 200k QR codes for enhanced security.
               </p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow">
-              <div className="text-purple-500 mb-3">
+            <div className="p-6 bg-white rounded-lg shadow">
+              <div className="mb-3 text-purple-500">
                 <Smartphone size={32} />
               </div>
-              <h3 className="text-lg font-semibold mb-2">UPI Validation</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="mb-2 text-lg font-semibold">UPI Validation</h3>
+              <p className="text-sm text-gray-600">
                 Special validation for UPI payment QR codes to prevent payment fraud.
               </p>
             </div>
