@@ -55,7 +55,7 @@ const QRScanner = ({ onScanSuccess, onScanError }) => {
       {!isScanning ? (
         <button
           onClick={startScanning}
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors"
+          className="flex items-center justify-center w-full gap-2 px-6 py-3 font-bold text-white transition-colors bg-blue-500 rounded-lg hover:bg-blue-600"
         >
           <Camera size={24} />
           Start QR Scanner
@@ -65,7 +65,7 @@ const QRScanner = ({ onScanSuccess, onScanError }) => {
           <div id="qr-reader" className="w-full"></div>
           <button
             onClick={stopScanning}
-            className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white p-2 rounded-full"
+            className="absolute p-2 text-white bg-red-500 rounded-full top-2 right-2 hover:bg-red-600"
           >
             <X size={16} />
           </button>
@@ -74,5 +74,7 @@ const QRScanner = ({ onScanSuccess, onScanError }) => {
     </div>
   );
 };
+
+
 
 export default QRScanner;
