@@ -35,12 +35,49 @@ const ResultDisplay = ({ result, decodedText }) => {
       case 'safe':
         return 'Safe to proceed';
       case 'suspicious':
-        return 'Proceed with caution';
+        return '⚠️ Proceed with caution - Potential security risk detected';
       case 'malicious':
-        return 'Do not proceed - Malicious content detected';
+        return '🚨 DO NOT PROCEED - Malicious content detected!';
       default:
         return 'Unknown status';
     }
+  };
+
+  // Helper function to get check status display
+  const getCheckDisplay = (checkName, status) => {
+    // Special handling for different checks
+    const checkLabels = {
+      'httpsProtocol': 'HTTPS Protocol',
+      'safeBrowsing': 'Google Safe Browsing',
+      'smartAnalyzer': 'ML Threat Detection',
+      'upiFormat': 'UPI Format'
+    };
+
+    const label = checkLabels[checkName] || checkName;
+
+    // For ML analyzer, inverse the logic display
+    // smartAnalyzer: true = no threats found = PASS
+    // smartAnalyzer: false = threats found = FAIL
+    let displayStatus = status;
+    let displayText = '';
+
+    if (checkName === 'smartAnalyzer') {
+      if (status === true) {
+        displayText = 'No threats detected';
+      } else if (status === false) {
+        displayText = 'Threats detected';
+      } else {
+        displayText = 'Not available';
+      }
+    } else if (checkName === 'httpsProtocol') {
+      displayText = status ? 'Secure HTTPS' : 'Insecure HTTP';
+    } else if (checkName === 'safeBrowsing') {
+      displayText = status ? 'Clean' : 'Flagged';
+    } else {
+      displayText = status ? 'Valid' : 'Invalid';
+    }
+
+    return { label, displayStatus, displayText };
   };
 
   return (
@@ -55,70 +92,114 @@ const ResultDisplay = ({ result, decodedText }) => {
 
       <div className="space-y-3">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block mb-1 text-sm font-medium text-gray-700">
             Decoded Content:
           </label>
-          <div className="p-3 bg-white border rounded break-all text-sm">
+          <div className="p-3 text-sm break-all bg-white border rounded">
             {decodedText}
           </div>
         </div>
 
         {result.contentType && (
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block mb-1 text-sm font-medium text-gray-700">
               Content Type:
             </label>
             <div className="flex items-center gap-2">
               {result.contentType === 'upi' && <Smartphone size={16} />}
-              <span className="text-sm">{result.contentType.toUpperCase()}</span>
+              <span className="text-sm font-semibold uppercase">{result.contentType}</span>
             </div>
           </div>
         )}
 
         {result.threatType && (
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block mb-1 text-sm font-medium text-gray-700">
               Threat Details:
             </label>
-            <p className="text-sm text-red-600">{result.threatType}</p>
+            <p className="text-sm font-medium text-red-600">{result.threatType}</p>
           </div>
         )}
 
-        {result.checks && (
+        {result.checks && Object.keys(result.checks).length > 0 && (
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block mb-2 text-sm font-medium text-gray-700">
               Security Checks:
             </label>
-            <div className="space-y-1">
-              {Object.entries(result.checks).map(([check, status]) => (
-                <div key={check} className="flex items-center justify-between text-sm">
-                  <span className="capitalize">{check.replace(/([A-Z])/g, ' $1')}</span>
-                  <span className={status ? 'text-green-600' : 'text-red-600'}>
-                    {status ? '✓' : '✗'}
-                  </span>
-                </div>
-              ))}
+            <div className="p-3 space-y-2 bg-white border rounded">
+              {Object.entries(result.checks).map(([check, status]) => {
+                const { label, displayStatus, displayText } = getCheckDisplay(check, status);
+                
+                let statusColor = 'text-gray-500';
+                let statusIcon = '○';
+                
+                if (status === true) {
+                  statusColor = 'text-green-600';
+                  statusIcon = '✓';
+                } else if (status === false) {
+                  statusColor = 'text-red-600';
+                  statusIcon = '✗';
+                } else {
+                  statusColor = 'text-gray-400';
+                  statusIcon = '—';
+                }
+
+                return (
+                  <div key={check} className="flex items-center justify-between text-sm">
+                    <span className="font-medium">{label}</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs text-gray-600">{displayText}</span>
+                      <span className={`font-bold text-lg ${statusColor}`}>
+                        {statusIcon}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}
 
-        {result.confidence && (
+        {result.confidence !== undefined && (
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block mb-1 text-sm font-medium text-gray-700">
               Confidence Score:
             </label>
-            <div className="w-full bg-gray-200 rounded-full h-2">
-              <div
-                className={`h-2 rounded-full ${
-                  result.confidence > 0.8 ? 'bg-green-500' : 
-                  result.confidence > 0.6 ? 'bg-yellow-500' : 'bg-red-500'
-                }`}
-                style={{ width: `${result.confidence * 100}%` }}
-              ></div>
+            <div className="space-y-2">
+              <div className="w-full h-3 bg-gray-200 rounded-full">
+                <div
+                  className={`h-3 rounded-full transition-all duration-500 ${
+                    result.confidence > 0.7 ? 'bg-red-500' : 
+                    result.confidence > 0.5 ? 'bg-yellow-500' : 'bg-green-500'
+                  }`}
+                  style={{ width: `${result.confidence * 100}%` }}
+                ></div>
+              </div>
+              <div className="flex justify-between text-xs text-gray-600">
+                <span>Safe</span>
+                <span className="font-semibold">
+                  {Math.round(result.confidence * 100)}% Risk Level
+                </span>
+                <span>Dangerous</span>
+              </div>
             </div>
-            <span className="text-sm text-gray-600">
-              {Math.round(result.confidence * 100)}%
-            </span>
+          </div>
+        )}
+
+        {result.analysis && result.analysis.reason && (
+          <div>
+            <label className="block mb-1 text-sm font-medium text-gray-700">
+              Analysis Details:
+            </label>
+            <div className="p-3 text-xs text-gray-700 border rounded bg-gray-50">
+              {result.analysis.reason}
+            </div>
+          </div>
+        )}
+
+        {result.source && (
+          <div className="text-xs text-right text-gray-500">
+            Analysis source: {result.source}
           </div>
         )}
       </div>
