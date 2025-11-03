@@ -2,6 +2,8 @@
 
 A comprehensive web-based security tool that scans QR codes and analyzes their content for malicious URLs, phishing attempts, and other security threats using Google Safe Browsing API and machine learning.
 
+
+
 ## 🛡️ Features 
 
 - **Real-time QR Code Scanning**: Live camera-based QR code detection
