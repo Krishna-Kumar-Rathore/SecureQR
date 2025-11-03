@@ -26,7 +26,7 @@ const UploadQR = ({ onScanSuccess, onScanError }) => {
     <div className="w-full max-w-md mx-auto">
       <button
         onClick={triggerFileInput}
-        className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors"
+        className="flex items-center justify-center w-full gap-2 px-6 py-3 font-bold text-white transition-colors bg-green-500 rounded-lg hover:bg-green-600"
       >
         <Upload size={24} />
         Upload QR Image
@@ -42,5 +42,7 @@ const UploadQR = ({ onScanSuccess, onScanError }) => {
     </div>
   );
 };
+
+
 
 export default UploadQR;
